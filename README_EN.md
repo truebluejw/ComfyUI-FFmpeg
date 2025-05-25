@@ -137,7 +137,7 @@ ___
 **use_audio**: which audio will be used in the stitched video? You can choose the audio from either the first video or the second video, that is, from video1 or video2.<br>
 **stitching_type**: the methods for stitching videos are divided into two types: horizontal stitching and vertical stitching.<br>
 **output_path**: video save path,e.g.:`C:\Users\Desktop\output`<br>
-
+**scale_and_crop**: Scale and crop to match video1's dimensions.<br>
 ___
 
 ##### MultiCuttingVideo Node: The purpose is to split one video into several smaller videos.<br>
@@ -174,6 +174,26 @@ ___
 **output_path**: video save path,e.g.:`C:\Users\Desktop\output`<br>
 
 ___
+
+##### PipVideo Node: Add picture-in-picture functionality to videos<br>
+
+![](./assets/13.png)
+
+###### Parameter Description
+**video1_path**: The background video for picture-in-picture (PIP), e.g.,`C:\Users\Desktop\111.mp4`<br>
+**video2_path**: The foreground video for PIP, e.g., `C:\Users\Desktop\222.mp4`<br>
+**device**: Choose between CPU and GPU. If merging fails on CPU, try GPU instead.<br>
+**use_audio**: Select which video's audio to use in the final output—either video1 or video2.<br>
+**use_duration**: Determine the final video's duration based on video1 or video2.<br>
+**align_type**: Position of the foreground video on the background—options: top-left, top-right, bottom-left, bottom-right, or center.<br>
+**pip_fg_zoom**: PIP foreground scaling factor—larger values make the foreground smaller (scaled relative to background dimensions).<br>
+**output_path**: Output video save path, e.g., `C:\Users\Desktop\output`<br>
+**scale_and_crop**: Scaling and cropping ratio.<br>
+**fps**: v<br>
+**is_chromakey**: Whether to apply green screen (chroma key) background removal.<br>
+
+___
+
 
 ## Social Account Homepage
 - Bilibili：[My BILIBILI Homepage](https://space.bilibili.com/1303099255)

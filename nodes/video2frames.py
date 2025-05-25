@@ -54,7 +54,7 @@ class Video2Frames:
             # 获取视频帧率、时长、宽高信息
             command = [
                 'ffprobe', '-v', 'error', '-select_streams', 'v:0', '-show_entries', 
-                'stream=avg_frame_rate,duration,width,height', '-of', 'json', video_path
+                'stream=avg_frame_rate,nb_frames,duration,width,height', '-of', 'json', video_path
             ]
 
             # 运行ffprobe命令
@@ -82,8 +82,12 @@ class Video2Frames:
             else:
                 raise ValueError("无法获取视频信息")
 
-            # 计算总帧数
-            total_frames = math.ceil(fps * duration)
+            nb_frames = stream.get('nb_frames')
+            if nb_frames and nb_frames.isdigit():
+                total_frames = int(nb_frames)
+            else:
+                # 计算总帧数
+                total_frames = math.ceil(fps * duration)
             print(f"视频的帧率是: {fps}, 宽度是: {width}, 高度是: {height}, 时长是: {duration}, 总帧数是: {total_frames}")
             # 提取帧
             frame_path = os.path.join(output_path, 'frames')

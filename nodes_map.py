@@ -14,6 +14,7 @@ from .nodes.multiCuttingVideo import *
 from .nodes.singleCuttingVideo import *
 from .nodes.addAudio import *
 from .nodes.imagesSave import *
+from .nodes.pipVideo import *
 
 NODE_CLASS_MAPPINGS = {
     "Video2Frames": Video2Frames,
@@ -32,6 +33,7 @@ NODE_CLASS_MAPPINGS = {
     "SingleCuttingVideo": SingleCuttingVideo,
     "AddAudio": AddAudio,
     "ImagesSave": ImagesSave,
+    "PipVideo": PipVideo,
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
@@ -52,4 +54,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "SingleCuttingVideo": "🔥SingleCuttingVideo",
     "AddAudio": "🔥AddAudio",
     "ImagesSave": "🔥ImagesSave",
+    "PipVideo": "🔥PipVideo",
 }

@@ -135,6 +135,7 @@ ___
 **use_audio**: 拼接后的视频使用哪个视频的音频，可以选择第一个视频的音频或者第二个视频的音频，即video1或者video2。<br>
 **stitching_type**: 拼接视频方式，分为水平拼接（horizontal）和垂直拼接（vertical）两种方式。<br>
 **output_path**: 视频保存路径，比如：`C:\Users\Desktop\output`<br>
+**scale_and_crop**: 是否缩放裁剪成video1的尺寸。<br>
 
 ___
 
@@ -171,6 +172,25 @@ ___
 **file_path**: 如果audio_from为audio_file，这里就填入一个音频文件路径，如果audio_from为video_file，那么这里就填入一个视频文件路径，比如：`C:\Users\Desktop\111.mp3` 或者 `C:\Users\Desktop\111.mp4`<br>
 **delay_play**: 音频延迟播放时间，单位为秒，默认值为0。<br>
 **output_path**: 视频保存路径，比如：`C:\Users\Desktop\output`<br>
+
+___
+
+##### PipVideo节点: 给视频增加画中画功能<br>
+
+![](./assets/13.png)
+
+###### 参数说明
+**video1_path**: 画中画背景视频，比如：`C:\Users\Desktop\111.mp4`<br>
+**video2_path**: 画中画前景视频，比如：`C:\Users\Desktop\222.mp4`<br>
+**device**: 分为CPU和GPU，如果你用CPU拼接两个视频出错的话，可以尝试用GPU。<br>
+**use_audio**: 最终视频使用哪个视频的音频，可以选择第一个视频的音频或者第二个视频的音频，即video1或者video2。<br>
+**use_duration**: 使用哪个视频的时长作为最终视频的时长，可以选择第一个视频或者第二个视频，即video1或者video2。<br>
+**align_type**: 前景视频在背景视频中的位置，有top-left、top-right、bottom-left、bottom-right、center这些选项。<br>
+**pip_fg_zoom**: 画中画背景缩放系数，越大前景画面越小，值为背景宽高的缩小倍数。<br>
+**output_path**: 视频保存路径，比如：`C:\Users\Desktop\output`<br>
+**scale_and_crop**: 缩放和裁剪比例。<br>
+**fps**: 最终视频的帧率，默认为30.0，设置为0将使用video2的帧率，设置为1为将使用video2的帧率。<br>
+**is_chromakey**: 是否进行绿幕去背景。<br>
 
 ___
 

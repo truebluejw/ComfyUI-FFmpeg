@@ -59,10 +59,7 @@ class PipVideo:
             video1_audio = has_audio(video1_path)
             video2_audio = has_audio(video2_path)
 
-            #final_output = set_file_name(video1_path)
-            #增加以视频1+视频2的文件名合并重命名
-            final_output = f"{os.path.splitext(os.path.basename(video1_path))[0]}--{os.path.splitext(os.path.basename(video2_path))[0]}.mp4"
-
+            final_output = set_file_name(video1_path)
             #文件名根据年月日时分秒来命名
             output_path = os.path.join(output_path, final_output)
 

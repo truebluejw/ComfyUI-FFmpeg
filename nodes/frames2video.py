@@ -49,7 +49,9 @@ class Frames2Video:
             #判断output_path是否是一个目录
             if not os.path.isdir(output_path):
                 raise ValueError("output_path："+output_path+"不是目录（output_path:"+output_path+" is not a directory）")
-            output_path =  f"{output_path}\{video_name}.mp4" # 将输出目录和输出文件名合并为一个输出路径
+            
+            #output_path =  f"{output_path}\\{video_name}.mp4" # 将输出目录和输出文件名合并为一个输出路径
+            output_path =  os.path.join(output_path, f"{video_name}.mp4")
             # 获取输入目录中的所有图像文件
             valid_extensions = ('.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff')
             # 获取所有图片并按文件名排序
