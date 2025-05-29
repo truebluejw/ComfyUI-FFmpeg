@@ -20,7 +20,7 @@ class VideoTransition:
                 "reference_video": (["video1","video2"], {"default":"video1","tooltip": "参考视频是哪个视频，决定了输出视频的尺寸和帧率！（Reference video is which video, determines the size and frame rate of the output video!）"}),
                 "device": (["cpu","cuda"], {"default":device,}),
                 "transition": (get_xfade_transitions(),{"default": "fade",}),
-                "transition_duration": ("FLOAT",{"default":1,"min":0.1,"max":3.0,"step":0.1,"display":"number","tooltip": "转场持续时间，单位秒，最大值为3秒，不能小于等于0！（Transition duration, in seconds, maximum value is 3 seconds, cannot be less than or equal to 0!）"}),
+                "transition_duration": ("FLOAT",{"default":1,"min":0.1,"max":3.0,"step":0.1,"display":"number","tooltip": "转场持续时间，单位秒，最大值为3秒，不能小于0.1秒！（Transition duration, in seconds, the maximum value is 3 seconds, cannot be less than 0.1 seconds!）"}),
                 "offset": ("FLOAT",{"default":1,"min":0.1,"step":0.1,"display":"number","tooltip": "转场开始时间，单位秒，不能大于等于视频1的时长减去转场持续时间（transition_duration）！（Transition start time, in seconds, cannot be greater than or equal to the duration of video1 minus the transition duration (transition_duration)!）"}),
                 "output_path": ("STRING", {"default":"C:/Users/Desktop/output",}),
             },

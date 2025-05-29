@@ -204,7 +204,7 @@ ___
 **reference_video**: 参考视频是哪个视频，决定了输出视频的尺寸和帧率。<br>
 **device**: 分为CPU和GPU，如果你用CPU出错的话，可以尝试用GPU。<br>
 **transition**: 转场特效名称，默认有'fade', 'wipeleft', 'wiperight', 'wipeup', 'wipedown','slideleft', 'slideright', 'slideup', 'slidedown','circlecrop', 'rectcrop', 'distance', 'fadeblack', 'fadewhite','radial', 'smoothleft', 'smoothright', 'smoothup', 'smoothdown','circleopen', 'circleclose', 'vertopen', 'vertclose','horzopen', 'horzclose', 'dissolve', 'pixelize','diagtl', 'diagtr', 'diagbl', 'diagbr','hlslice', 'hrslice', 'vuslice', 'vdslice','hblur', 'fadegrays', 'wipetl', 'wipetr', 'wipebl', 'wipebr','squeezeh', 'squeezev', 'zoomin', 'fadefast', 'fadeslow','hlwind', 'hrwind', 'vuwind', 'vdwind','coverleft', 'coverright', 'coverup', 'coverdown','revealleft', 'revealright', 'revealup', 'revealdown'，可以执行命令：ffmpeg -hide_banner -h filter=xfade 查看你本地ffmpeg版本可用的转场效果。<br>
-**transition_duration**: 转场持续时间，单位秒，最大值为3秒，不能小于等于0.1。<br>
+**transition_duration**: 转场持续时间，单位秒，最大值为3秒，不能小于0.1秒。<br>
 **offset**: 转场开始时间，单位秒，不能大于等于video1的时长减去转场持续时间。<br>
 **output_path**: 视频保存路径，比如：`C:\Users\Desktop\output`<br>
 
