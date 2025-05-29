@@ -182,7 +182,7 @@ ___
 ###### 参数说明
 **video1_path**: 画中画背景视频，比如：`C:\Users\Desktop\111.mp4`<br>
 **video2_path**: 画中画前景视频，比如：`C:\Users\Desktop\222.mp4`<br>
-**device**: 分为CPU和GPU，如果你用CPU拼接两个视频出错的话，可以尝试用GPU。<br>
+**device**: 分为CPU和GPU，如果你用CPU出错的话，可以尝试用GPU。<br>
 **use_audio**: 最终视频使用哪个视频的音频，可以选择第一个视频的音频或者第二个视频的音频，即video1或者video2。<br>
 **use_duration**: 使用哪个视频的时长作为最终视频的时长，可以选择第一个视频或者第二个视频，即video1或者video2。<br>
 **align_type**: 前景视频在背景视频中的位置，有top-left、top-right、bottom-left、bottom-right、center这些选项。<br>
@@ -191,6 +191,22 @@ ___
 **scale_and_crop**: 缩放和裁剪比例。<br>
 **fps**: 最终视频的帧率，默认为30.0，设置为0将使用video2的帧率，设置为1为将使用video2的帧率。<br>
 **is_chromakey**: 是否进行绿幕去背景。<br>
+
+___
+
+##### VideoTransition节点: 给两个视频添加转场过渡动画效果<br>
+
+![](./assets/14.png)
+
+###### 参数说明
+**video1_path**: 视频路径，比如：`C:\Users\Desktop\111.mp4`<br>
+**video2_path**: 视频路径，比如：`C:\Users\Desktop\222.mp4`<br>
+**reference_video**: 参考视频是哪个视频，决定了输出视频的尺寸和帧率。<br>
+**device**: 分为CPU和GPU，如果你用CPU出错的话，可以尝试用GPU。<br>
+**transition**: 转场特效名称，默认有'fade', 'wipeleft', 'wiperight', 'wipeup', 'wipedown','slideleft', 'slideright', 'slideup', 'slidedown','circlecrop', 'rectcrop', 'distance', 'fadeblack', 'fadewhite','radial', 'smoothleft', 'smoothright', 'smoothup', 'smoothdown','circleopen', 'circleclose', 'vertopen', 'vertclose','horzopen', 'horzclose', 'dissolve', 'pixelize','diagtl', 'diagtr', 'diagbl', 'diagbr','hlslice', 'hrslice', 'vuslice', 'vdslice','hblur', 'fadegrays', 'wipetl', 'wipetr', 'wipebl', 'wipebr','squeezeh', 'squeezev', 'zoomin', 'fadefast', 'fadeslow','hlwind', 'hrwind', 'vuwind', 'vdwind','coverleft', 'coverright', 'coverup', 'coverdown','revealleft', 'revealright', 'revealup', 'revealdown'，可以执行命令：ffmpeg -hide_banner -h filter=xfade 查看你本地ffmpeg版本可用的转场效果。<br>
+**transition_duration**: 转场持续时间，单位秒，最大值为3秒，不能小于等于0.1。<br>
+**offset**: 转场开始时间，单位秒，不能大于等于video1的时长减去转场持续时间。<br>
+**output_path**: 视频保存路径，比如：`C:\Users\Desktop\output`<br>
 
 ___
 

@@ -180,20 +180,35 @@ ___
 ![](./assets/13.png)
 
 ###### Parameter Description
-**video1_path**: The background video for picture-in-picture (PIP), e.g.,`C:\Users\Desktop\111.mp4`<br>
-**video2_path**: The foreground video for PIP, e.g., `C:\Users\Desktop\222.mp4`<br>
-**device**: Choose between CPU and GPU. If merging fails on CPU, try GPU instead.<br>
+**video1_path**: The background video for picture-in-picture (PIP), e.g.:`C:\Users\Desktop\111.mp4`<br>
+**video2_path**: The foreground video for PIP, e.g.:`C:\Users\Desktop\222.mp4`<br>
+**device**: Choose between CPU and GPU. If errors occur with CPU, try switching to GPU.<br>
 **use_audio**: Select which video's audio to use in the final output—either video1 or video2.<br>
 **use_duration**: Determine the final video's duration based on video1 or video2.<br>
 **align_type**: Position of the foreground video on the background—options: top-left, top-right, bottom-left, bottom-right, or center.<br>
 **pip_fg_zoom**: PIP foreground scaling factor—larger values make the foreground smaller (scaled relative to background dimensions).<br>
-**output_path**: Output video save path, e.g., `C:\Users\Desktop\output`<br>
+**output_path**: Output video save path, e.g.:`C:\Users\Desktop\output`<br>
 **scale_and_crop**: Scaling and cropping ratio.<br>
 **fps**: v<br>
 **is_chromakey**: Whether to apply green screen (chroma key) background removal.<br>
 
 ___
 
+##### VideoTransition Node: Add Transition Animation Effects to Two Videos<br>
+
+![](./assets/14.png)
+
+###### Parameter Description
+**video1_path**: local video path,e.g.:`C:\Users\Desktop\111.mp4`<br>
+**video2_path**: local video path,e.g.:`C:\Users\Desktop\222.mp4`<br>
+**reference_video**: Specifies which video serves as the reference for determining the output video's dimensions and frame rate.<br>
+**device**: Choose between CPU and GPU. If errors occur with CPU, try switching to GPU.<br>
+**transition**: Transition effect name. Default options include:'fade', 'wipeleft', 'wiperight', 'wipeup', 'wipedown','slideleft', 'slideright', 'slideup', 'slidedown','circlecrop', 'rectcrop', 'distance', 'fadeblack', 'fadewhite','radial', 'smoothleft', 'smoothright', 'smoothup', 'smoothdown','circleopen', 'circleclose', 'vertopen', 'vertclose','horzopen', 'horzclose', 'dissolve', 'pixelize','diagtl', 'diagtr', 'diagbl', 'diagbr','hlslice', 'hrslice', 'vuslice', 'vdslice','hblur', 'fadegrays', 'wipetl', 'wipetr', 'wipebl', 'wipebr','squeezeh', 'squeezev', 'zoomin', 'fadefast', 'fadeslow','hlwind', 'hrwind', 'vuwind', 'vdwind','coverleft', 'coverright', 'coverup', 'coverdown','revealleft', 'revealright', 'revealup', 'revealdown'，To check available transitions for your local FFmpeg version, run: `ffmpeg -hide_banner -h filter=xfade`.<br>
+**transition_duration**: Transition duration in seconds. Maximum value: 3 seconds; cannot be < 0.1.<br>
+**offset**: Transition start time in seconds. Cannot be ≥ (duration of video1 duration minus transition_duration).<br>
+**output_path**: Output video save path, e.g.:`C:\Users\Desktop\output`<br>
+
+___
 
 ## Social Account Homepage
 - Bilibili：[My BILIBILI Homepage](https://space.bilibili.com/1303099255)

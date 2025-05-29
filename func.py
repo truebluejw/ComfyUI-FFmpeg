@@ -13,6 +13,55 @@ from itertools import islice
 from concurrent.futures import ThreadPoolExecutor,as_completed
 from comfy.model_management import unload_all_models, soft_empty_cache
 
+def get_xfade_transitions():
+    try:
+        #执行命令：ffmpeg -hide_banner -h filter=xfade 查看可用的转场效果，执行ffmpeg命令获取xfade过滤器帮助信息
+        result = subprocess.run(
+            ['ffmpeg', '-hide_banner', '-h', 'filter=xfade'],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+        
+        # 命令输出在stderr中
+        output = result.stdout if result.stdout else result.stderr
+        print(output)
+        # 使用正则表达式匹配所有transition行
+        pattern = r'^\s*(\w+)\s+-?\d+\b'
+        data = output.split('\n')
+        if len(data) == 0:
+            transitions = [
+                'fade', 'wipeleft', 'wiperight', 'wipeup', 'wipedown',
+                'slideleft', 'slideright', 'slideup', 'slidedown',
+                'circlecrop', 'rectcrop', 'distance', 'fadeblack', 'fadewhite',
+                'radial', 'smoothleft', 'smoothright', 'smoothup', 'smoothdown',
+                'circleopen', 'circleclose', 'vertopen', 'vertclose',
+                'horzopen', 'horzclose', 'dissolve', 'pixelize',
+                'diagtl', 'diagtr', 'diagbl', 'diagbr',
+                'hlslice', 'hrslice', 'vuslice', 'vdslice',
+                'hblur', 'fadegrays', 'wipetl', 'wipetr', 'wipebl', 'wipebr',
+                'squeezeh', 'squeezev', 'zoomin', 'fadefast', 'fadeslow',
+                'hlwind', 'hrwind', 'vuwind', 'vdwind',
+                'coverleft', 'coverright', 'coverup', 'coverdown',
+                'revealleft', 'revealright', 'revealup', 'revealdown'
+            ]  # 如果没有找到任何transition，使用默认的
+        else:
+            transitions = []
+            for line in data:
+                match = re.search(pattern, line)
+                if match and match.group(1) != 'none' and match.group(1) != 'custom':
+                    transitions.append(match.group(1))
+                
+        return sorted(transitions)
+    
+    except subprocess.CalledProcessError as e:
+        print(f"执行ffmpeg命令出错: {e}")
+        print(f"错误输出: {e.stderr}")
+        return []
+    except FileNotFoundError:
+        print("错误: 找不到ffmpeg程序，请确保ffmpeg已安装并添加到系统PATH")
+        return []
+
 def copy_image(image_path, destination_directory):
     try:
         # 获取图片文件名
