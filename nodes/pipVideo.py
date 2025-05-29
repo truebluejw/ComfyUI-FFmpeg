@@ -85,7 +85,7 @@ class PipVideo:
             width =  math.ceil(video_info['width']/2)*2
             height = math.ceil(video_info['height']/2)*2
 
-            use_audio = {
+            use_audio_index = {
                 'video1': '0',
                 'video2': '1',
             }.get(use_audio, '0')
@@ -98,12 +98,12 @@ class PipVideo:
                 "center": f"(W-w)/2:(H-h)/2",
             }.get(align_type, f"(W-w)/2:(H-h)/2")
             
-            if height*540/width>=960: #如果高同比缩放高度超出960，需要裁剪
-                pad_or_crop1='crop=540:960:(iw-iw)/2:(ih-ih/2)/2'
+            if height*540/width>960: #如果高同比缩放高度超出960，需要裁剪
+                pad_or_crop1='crop=540:960:(ow-iw)/2:(oh-ih)/2'
             else: #比固定高小，需要填充黑边
                 pad_or_crop1='pad=540:960:(ow-iw)/2:(oh-ih)/2:color=black'
-            if height*960/width>=540: #如果缩放到宽960时，高超出540，需要裁剪
-                pad_or_crop2='crop=960:540:(iw-iw)/2:(ih-ih/2)/2'
+            if height*960/width>540: #如果缩放到宽960时，高超出540，需要裁剪
+                pad_or_crop2='crop=960:540:(ow-iw)/2:(oh-ih)/2'
             else:
                 pad_or_crop2='pad=960:540:(ow-iw)/2:(oh-ih)/2:color=black'
             scale_and_crop_data = {
@@ -133,7 +133,7 @@ class PipVideo:
             
             if video1_audio or video2_audio:
                 #-map 1:a 指定使用第二个视频的音频流
-                command = fr'ffmpeg "-y" {use_cuvid} -stream_loop -1 -i "{video1_path}" -stream_loop -1 -i "{video2_path}" -filter_complex "[0:v]fps={fps},setpts=PTS-STARTPTS[bg];[1:v]fps={fps},setpts=PTS-STARTPTS[fg];[bg]{scale_and_crop_data}[bg_out];[fg]{chromakey}[fgd];[fgd]scale={video2_width}/{pip_fg_zoom}:-1,setsar=1[fg_out];[bg_out][fg_out]overlay={align_position}[out];[out]{final_out}[final_out]" -map "[final_out]" -map {use_audio}:a? {use_encoder} -c:a aac -t {duration_1} "{output_path}"'
+                command = fr'ffmpeg "-y" {use_cuvid} -stream_loop -1 -i "{video1_path}" -stream_loop -1 -i "{video2_path}" -filter_complex "[0:v]fps={fps},setpts=PTS-STARTPTS[bg];[1:v]fps={fps},setpts=PTS-STARTPTS[fg];[bg]{scale_and_crop_data}[bg_out];[fg]{chromakey}[fgd];[fgd]scale={video2_width}/{pip_fg_zoom}:-1,setsar=1[fg_out];[bg_out][fg_out]overlay={align_position}[out];[out]{final_out}[final_out]" -map "[final_out]" -map {use_audio_index}:a? {use_encoder} -c:a aac -t {duration_1} "{output_path}"'
             else:
                 command = fr'ffmpeg "-y" {use_cuvid} -stream_loop -1 -i "{video1_path}" -stream_loop -1 -i "{video2_path}" -filter_complex "[0:v]fps={fps},setpts=PTS-STARTPTS[bg];[1:v]fps={fps},setpts=PTS-STARTPTS[fg];[bg]{scale_and_crop_data}[bg_out];[fg]{chromakey}[fgd];[fgd]scale={video2_width}/{pip_fg_zoom}:-1,setsar=1[fg_out];[bg_out][fg_out]overlay={align_position}[out];[out]{final_out}[final_out]" -map "[final_out]" -t {duration_1} "{output_path}"'
                 
