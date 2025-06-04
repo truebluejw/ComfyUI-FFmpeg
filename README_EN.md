@@ -27,7 +27,7 @@ You need to install FFmpeg before using this node, the FFmpeg installation metho
 Directly download the node source package, then extract it into the custom_nodes directory, and finally restart ComfyUI.
 
 #### Method 3：
-Install through ComfyUI-Manager by searching for 'ComfyUI-BiRefNet-Hugo' and installing it.
+Install through ComfyUI-Manager by searching for 'ComfyUI-FFmpeg' and installing it.
 
 ## Nodes introduction
 
