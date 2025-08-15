@@ -210,6 +210,18 @@ ___
 
 ___
 
+##### VideoPlayback节点: 作用是倒放视频<br>
+
+![](./assets/15.png)
+
+###### 参数说明
+**video_path**: 本地视频路径，比如：`C:\Users\Desktop\222.mp4`<br>
+**output_path**: 视频保存路径，比如：`C:\Users\Desktop\output`<br>
+**reverse_audio**:是否倒放音频，默认值为True<br>
+
+
+___
+
 
 ## 社交账号
 - Bilibili：[我的B站主页](https://space.bilibili.com/1303099255)

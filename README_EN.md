@@ -210,6 +210,18 @@ ___
 
 ___
 
+##### VideoPlayback Node: The function is to play the video in reverse.<br>
+
+![](./assets/15.png)
+
+###### Parameter Description
+**video_path**: local video path,e.g.:`C:\Users\Desktop\222.mp4`<br>
+**output_path**: video save path,e.g.:`C:\Users\Desktop\output`<br>
+**reverse_audio**: Whether to reverse the audio playback, default is True.<br>
+
+
+___
+
 ## Social Account Homepage
 - Bilibili：[My BILIBILI Homepage](https://space.bilibili.com/1303099255)
 

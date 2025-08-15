@@ -16,6 +16,7 @@ from .nodes.addAudio import *
 from .nodes.imagesSave import *
 from .nodes.pipVideo import *
 from .nodes.videoTransition import *
+from .nodes.videoPlayback import *
 
 NODE_CLASS_MAPPINGS = {
     "Video2Frames": Video2Frames,
@@ -36,6 +37,7 @@ NODE_CLASS_MAPPINGS = {
     "ImagesSave": ImagesSave,
     "PipVideo": PipVideo,
     "VideoTransition": VideoTransition,
+    "VideoPlayback": VideoPlayback,
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
@@ -58,4 +60,5 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "ImagesSave": "🔥ImagesSave",
     "PipVideo": "🔥PipVideo",
     "VideoTransition": "🔥VideoTransition",
+    "VideoPlayback": "🔥VideoPlayback",
 }
